@@ -251,4 +251,22 @@ function carregarCatalogo() {
   });
 }
 
+listaCatalogo.addEventListener("click", (e) => {
+  const row = e.target.closest("tr");
+  if (!row) return;
+
+  const codigo = row.children[0].innerText;
+
+  // copia pro clipboard
+  navigator.clipboard.writeText(codigo);
+
+  // joga direto no input do código de barras
+  input.value = codigo;
+  input.focus();
+
+  // feedback visual rápido (opcional, mas top)
+  row.classList.add("copiado");
+  setTimeout(() => row.classList.remove("copiado"), 500);
+});
+
 carregarCatalogo();
