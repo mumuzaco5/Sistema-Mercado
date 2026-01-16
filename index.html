@@ -22,17 +22,17 @@
 
       <div class="box">
         <h3>CÓDIGO DE BARRAS</h3>
-        <input id="barcode" placeholder="Digite o código e pressione Enter">
+        <input id="barcode" placeholder="Digite o código e pressione Enter" autocomplete="off" inputmode="numeric" type="number">
       </div>
 
-      <div class="box destaque">
+      <div class="box destaque" id="vlr-unit">
         <h3>VALOR UNITÁRIO</h3>
-        <span>R$ 0,00</span>
+        <span>R$ 0.00</span>
       </div>
 
-      <div class="box destaque">
+      <div class="box destaque" id="total-item">
         <h3>TOTAL DO ITEM</h3>
-        <span>R$ 0,00</span>
+        <span>R$ 0.00</span>
       </div>
     </section>
 
@@ -66,24 +66,25 @@
       <div class="totais">
         <div class="subtotal">
           <span>SUBTOTAL</span>
-          <strong>0,00</strong>
+          <strong>0.00</strong>
         </div>
         <div class="bottom">
           <div>
             <span>TOTAL RECEBIDO</span>
-            <input id="valorPago" placeholder="R$ 0,00">
+            <input id="valorPago" placeholder="R$ 0.00" autocomplete="off" inputmode="numeric" type="number">
           </div>
           <div>
             <span>TROCO</span>
-            <strong id="troco">R$ 0,00</strong>
+            <strong id="troco">R$ 0.00</strong>
           </div>
         </div>
       </div>
       <div class="cpf-area">
         <input id="cpf" placeholder="CPF (opcional)">
       </div>
-      <div>
+      <div class="acoes-venda">
         <button id="finalizarVenda">FINALIZAR VENDA</button>
+        <button id="cancelarVenda">CANCELAR VENDA</button>
       </div>
     </section>
     <section class="catalogo">
