@@ -105,17 +105,66 @@ function calcularTroco() {
   } else {
     trocoEl.textContent = `R$ ${(pago - total).toFixed(2)}`;
 
-    // reset da venda
-    carrinho = {};
-    inputPago.value = "";
     atualizar();
   }
 }
 
+function gerarNota(cpf) {
+  const nota = document.getElementById("notaFiscal");
+  const notaCpf = document.getElementById("notaCpf");
+  const notaItens = document.getElementById("notaItens");
+
+  const total = Number(subtotalEl.textContent);
+  const pago = Number(inputPago.value.replace(",", "."));
+  const troco = pago - total;
+
+  notaCpf.textContent = cpf
+    ? `CPF: ${cpf}`
+    : "CPF não informado";
+
+  notaItens.innerHTML = "";
+
+  Object.values(carrinho).forEach(p => {
+    notaItens.innerHTML += `
+      <p>${p.nome} (${p.qtd}x) - R$ ${(p.qtd * p.preco).toFixed(2)}</p>
+    `;
+  });
+
+  document.getElementById("notaTotal").textContent = `R$ ${total.toFixed(2)}`;
+  document.getElementById("notaPago").textContent = `R$ ${pago.toFixed(2)}`;
+  document.getElementById("notaTroco").textContent = `R$ ${troco.toFixed(2)}`;
+
+  nota.classList.remove("hidden");
+}
+
+function fecharNota() {
+  document.getElementById("notaFiscal").classList.add("hidden");
+  resetarVenda();
+}
+
 function finalizarVenda() {
-lista.textContent = "";
-subtotalEl.textContent = "0,00";
-trocoEl.textContent = "R$ 0,00";
+  if (Object.keys(carrinho).length === 0) {
+    alert("Nenhum item no carrinho");
+    return;
+  }
+
+  const cpf = document.getElementById("cpf").value.trim();
+  const desejaNota = confirm("Deseja emitir nota fiscal?");
+
+  if (!desejaNota) {
+    resetarVenda();
+    return;
+  }
+
+  gerarNota(cpf);
+}
+
+function resetarVenda() {
+  carrinho = {};
+  inputPago.value = "";
+  document.getElementById("cpf").value = "";
+  trocoEl.textContent = "R$ 0,00";
+  atualizar();
 }
 
 const btnFinalizar = document.getElementById("finalizarVenda");
