@@ -40,29 +40,30 @@
     <section class="right">
       <h3>LISTA DE PRODUTOS</h3>
 
-      <table>
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Código</th>
-            <th>Descrição</th>
-            <th>Qtd</th>
-            <th>Vlr Unitário</th>
-            <th>Total</th>
-          </tr>
-        </thead>
-        <tbody id="lista-produtos">
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table>
-
+      <div class="lista-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Código</th>
+              <th>Descrição</th>
+              <th>Qtd</th>
+              <th>Vlr Unitário</th>
+              <th>Total</th>
+            </tr>
+          </thead>
+          <tbody id="lista-produtos">
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
       <div class="totais">
         <div class="subtotal">
           <span>SUBTOTAL</span>
@@ -97,8 +98,8 @@
             <button data-cat="todos">Todos</button>
             <button data-cat="mercearia">Mercearia</button>
             <button data-cat="bebidas">Bebidas</button>
-            <button data-cat="higiene">Higiene</button>
             <button data-cat="carne">Carnes</button>
+            <button data-cat="higiene">Higiene</button>
             <button data-cat="hortifruti">Hortifruti</button>
             <button data-cat="limpeza">Limpeza</button>
             <button data-cat="laticinios">Laticínios</button>
@@ -110,12 +111,9 @@
           id="pesquisaCatalogo"
           placeholder="Pesquisar produto ou código..."
           autocomplete="off"
-          maxlength="40"
+          maxlength="39"
         >
       <table>
-        <colgroup>
-          <col style="width: 100%">
-        </colgroup>
         <thead>
           <tr>
             <th>Código</th>
